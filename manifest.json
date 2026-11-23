@@ -1,0 +1,18 @@
+{
+  "name": "NoteScript",
+  "short_name": "NoteScript",
+  "description": "Notas rápidas y cifradas con sincronización offline",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F7F8FC",
+  "theme_color": "#6C47FF",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2965/2965358.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
