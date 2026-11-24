@@ -1,4 +1,4 @@
-const CACHE_NAME = 'docatril-offline-v1';
+const CACHE_NAME = 'docatril-offline-v2';
 
 const APP_ASSETS = [
   './',
