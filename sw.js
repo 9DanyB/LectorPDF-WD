@@ -1,9 +1,11 @@
-const CACHE_NAME = 'docatril-offline-v2';
+const CACHE_NAME = 'docatril-offline-v3';
 
 const APP_ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './icon-192.png',
+  './icon-512.png',
   'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
@@ -35,14 +37,12 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = req.url;
 
-  // No interceptar peticiones de sincronización hacia Google Apps Script
   if (url.includes('script.google.com') || url.includes('script.googleusercontent.com')) {
     return;
   }
 
   if (req.method !== 'GET') return;
 
-  // Para la interfaz HTML: Red primero (actualiza mejoras al instante) con respaldo offline
   if (req.mode === 'navigate' || url.endsWith('.html') || url.endsWith('/')) {
     event.respondWith(
       fetch(req)
@@ -56,7 +56,6 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Para librerías CDN y manifest: Caché primero para apertura instantánea sin internet
   event.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;
